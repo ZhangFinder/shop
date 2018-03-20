@@ -7,8 +7,10 @@ public class Product implements Serializable {
 	private String title;
 	private String image;
 	private int price;
+	private String summary;
+	private String detail;
 	private boolean buy;
-
+   
 	private boolean sell;
 
     public Product(){
@@ -65,6 +67,18 @@ public class Product implements Serializable {
 	}
 	public void setSell(boolean sell) {
 		this.sell = sell;
+	}
+	public String getSummary() {
+		return summary;
+	}
+	public void setSummary(String summary) {
+		this.summary = summary;
+	}
+	public String getDetail() {
+		return detail;
+	}
+	public void setDetail(String detail) {
+		this.detail = detail;
 	}
 
 }

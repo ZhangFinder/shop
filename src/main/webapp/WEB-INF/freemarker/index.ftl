@@ -6,6 +6,14 @@
 <#include "/include/header.ftl">
 
 <div class="g-doc">
+    <div class="m-tab m-tab-fw m-tab-simple f-cb">
+        <div class="tab">
+            <ul>
+                <li <#if !listType?? || listType != 1>class="z-sel"</#if> ><a href="/">所有内容</a></li>
+                <#if user?? && user.usertype == 0><li <#if listType == 1>class="z-sel"</#if> ><a href="/?type=1">未购买的内容</a></li></#if>
+            </ul>
+        </div>
+    </div>
   
     <#if !productList??>
     <div class="n-result">

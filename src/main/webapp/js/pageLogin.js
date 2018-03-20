@@ -17,12 +17,14 @@
 					loading.show();
 					ajax({
 						data:{userName:value1,password:value2},
-						url:'/api/login',
+						url:'/shop/user/login',
 						success:function(result){
+							
 							loading.hide();
-							location.href = '/';
+								location.href = '/shop/user/index';
 						},
 						error:function(message){
+							
 							loading.result(message||'登录失败');
 							isSubmiting = false;
 						}
