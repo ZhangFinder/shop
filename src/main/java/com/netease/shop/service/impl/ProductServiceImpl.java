@@ -1,5 +1,7 @@
 package com.netease.shop.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,5 +33,9 @@ public class ProductServiceImpl implements IProductService {
 	public void updateTestTx(Product product){
 		productDao.updateProduct(product);
 		throw new  RuntimeException("test");//事务测试测试成功
+	}
+	public List<Product> getProductList() {
+		
+		return productDao.getProductList();
 	}
 }
