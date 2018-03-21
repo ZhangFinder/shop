@@ -47,10 +47,7 @@ public class UserController {
 		return root1.toString();
 	}
 	public static void main(String[] args){
-		ObjectMapper mapper = new ObjectMapper(); 
-		ObjectNode root1 = mapper.createObjectNode();
-		root1.put("code", 300); 
-		root1.put("message", "用户名或者密码错误！"); 
-		System.out.println(root1.toString());
+		String str="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1521560120170&di=b74b841f2c6a654275e0c6a860d12138&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0159cf5848d440a801219c77259a61.jpg%401280w_1l_2o_100sh.jpg";
+	    System.out.println(str.length());
 	}
 }

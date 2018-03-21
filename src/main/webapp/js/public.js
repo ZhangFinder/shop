@@ -5,11 +5,18 @@
 	}
 	var title = form['title'];
 	var summary = form['summary'];
-	var image = form['image'];
+	var image = form['image_url'];
 	var detail = form['detail'];
 	var price = form['price'];
 	var isSubmiting = false;
 	var imgpre = util.get('imgpre');
+	console.log(title);
+	console.log(summary);
+	console.log(image);
+	console.log(detail);
+	console.log(price);
+	
+	
 	var loading = new Loading();
 	var page = {
 		init:function(){

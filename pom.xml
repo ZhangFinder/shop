@@ -54,13 +54,18 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
-			<version>4.2.1.RELEASE</version>
+			<version>4.1.7.RELEASE</version>
 		</dependency>
-		<!-- 3)Spring web -->
+		<!-- 2)Spring Dao -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
-			<version>4.2.1.RELEASE</version>
+			<version>4.1.7.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>4.1.7.RELEASE</version>
 		</dependency>
 		<!-- 3)Spring web -->
 		<dependency>
@@ -73,6 +78,7 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>4.1.7.RELEASE</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.freemarker</groupId>
 			<artifactId>freemarker</artifactId>

@@ -5,25 +5,116 @@ import java.io.Serializable;
 public class Product implements Serializable {
 	private int id;
 	private String title;
-	private String image;
-	private int price;
 	private String summary;
+	private String imageUrl;
 	private String detail;
-	private boolean buy;
-   
-	private boolean sell;
+	private int price;
 
-    public Product(){
-    	
-    }
-	public Product(int id, String title, String image, int price,boolean isBuy,boolean isSell) {
+	private boolean buy;
+
+	private boolean sell;
+    
+	
+	public Product(String title, String summary, String imageUrl, String detail, int price) {
 		super();
-		this.id = id;
 		this.title = title;
-		this.image = image;
+		this.summary = summary;
+		this.imageUrl = imageUrl;
+		this.detail = detail;
+		this.price = price;
+	}
+
+	public Product(int id, String title, String summary, String imageUrl, String detail, int price) {
+		super();
+		this.id=id;
+		this.title = title;
+		this.summary = summary;
+		this.imageUrl = imageUrl;
+		this.detail = detail;
+		this.price = price;
+	}
+
+	public Product(int pid, String title, String summary, String imageUrl, String detail, int price, boolean buy,
+			boolean sell) {
+		super();
+		this.id = pid;
+		this.title = title;
+		this.summary = summary;
+		this.imageUrl = imageUrl;
+		this.detail = detail;
+		this.price = price;
+		this.buy = buy;
+		this.sell = sell;
+	}
+	public Product(int pid,String title,String imageUrl,int price ,boolean buy,boolean sell){
+		this.id=pid;
+		this.title=title;		
+		this.imageUrl=imageUrl;
 		this.price=price;
-		this.buy = isBuy;
-		this.sell=isSell;
+		this.buy=buy;
+		this.sell=sell;
+	}
+
+	public Product() {
+
+	}
+
+
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	public boolean isBuy() {
+		return buy;
+	}
+
+	public void setBuy(boolean buy) {
+		this.buy = buy;
+	}
+
+	public boolean isSell() {
+		return sell;
+	}
+
+	public void setSell(boolean sell) {
+		this.sell = sell;
+	}
+
+	public String getSummary() {
+		return summary;
+	}
+
+	public void setSummary(String summary) {
+		this.summary = summary;
+	}
+
+	public String getDetail() {
+		return detail;
+	}
+
+	public void setDetail(String detail) {
+		this.detail = detail;
+	}
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 
 	public int getId() {
@@ -34,51 +125,10 @@ public class Product implements Serializable {
 		this.id = id;
 	}
 
-	public String getTitle() {
-		return title;
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", title=" + title + ", summary=" + summary + ", imageUrl=" + imageUrl
+				+ ", detail=" + detail + ", price=" + price + ", buy=" + buy + ", sell=" + sell + "]";
 	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getImage() {
-		return image;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
-	}
-
-	public int getPrice() {
-		return price;
-	}
-	public void setPrice(int price) {
-		this.price = price;
-	}
-	public boolean isBuy() {
-		return buy;
-	}
-	public void setBuy(boolean buy) {
-		this.buy = buy;
-	}
-	public boolean isSell() {
-		return sell;
-	}
-	public void setSell(boolean sell) {
-		this.sell = sell;
-	}
-	public String getSummary() {
-		return summary;
-	}
-	public void setSummary(String summary) {
-		this.summary = summary;
-	}
-	public String getDetail() {
-		return detail;
-	}
-	public void setDetail(String detail) {
-		this.detail = detail;
-	}
-
+    
 }

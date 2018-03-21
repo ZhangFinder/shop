@@ -21,7 +21,7 @@
 						success:function(result){
 							
 							loading.hide();
-								location.href = '/shop/user/index';
+								location.href = '/shop/product/index';
 						},
 						error:function(message){
 							

@@ -3,7 +3,7 @@ package com.netease.shop.meta;
 import java.io.Serializable;
 
 public class User implements Serializable {
-	private int userId;
+	private int id;
 	private String username;
 	private String password;
 	private int usertype;//0买家,1卖家
@@ -12,6 +12,8 @@ public class User implements Serializable {
 		
 	}
 	
+
+
 	public User(String username ,String password,int usertype){
 		super();
 		this.username=username;
@@ -20,10 +22,17 @@ public class User implements Serializable {
 	}
 	public User(int userId,String username ,String password,int usertype){
 		super();
-		this.userId=userId;
+		this.id=userId;
 		this.username=username;
 		this.setPassword(password);
 		this.usertype=usertype;
+	}
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getUsername() {
 		return username;
@@ -37,12 +46,7 @@ public class User implements Serializable {
 	public void setUsertype(int usertype) {
 		this.usertype = usertype;
 	}
-	public int getUserId() {
-		return userId;
-	}
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
+
 	public String getPassword() {
 		return password;
 	}
@@ -52,7 +56,7 @@ public class User implements Serializable {
 
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", usertype=" + usertype
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", usertype=" + usertype
 				+ "]";
 	}
 	

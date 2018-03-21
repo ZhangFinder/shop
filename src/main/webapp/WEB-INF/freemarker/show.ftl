@@ -11,7 +11,7 @@
     </div>
     <#else>
     <div class="n-show f-cb" id="showContent">
-        <div class="img"><img src="${product.image}" alt=""></div>
+        <div class="img"><img src="${product.imageUrl}" alt=""></div>
         <div class="cnt">
             <h2>${product.title}</h2>
             <p class="summary">${product.summary}</p>
@@ -20,15 +20,15 @@
             </div>
             <div class="oprt f-cb">
                 <#if user?? && user.usertype==0>
-                    <#if product.buy>
+                    <#if product.isBuy>
                     <span class="u-btn u-btn-primary z-dis">已购买</span>
-                    <span class="buyprice">当时购买价格：¥${product.price}</span>
+                    <span class="buyprice">当时购买价格：¥${product.buyPrice}</span>
                     <#else>
                     <button class="u-btn u-btn-primary" data-buy="${product.id}">购 买</button>
                     </#if>
                 </#if>
                 <#if user?? && user.usertype==1>
-                <a href="/edit?id=${product.id}" class="u-btn u-btn-primary">编 辑</a>
+                <a href="/shop/product/edit?id=${product.id}" class="u-btn u-btn-primary">编 辑</a>
                 </#if>
             </div>
         </div>
@@ -42,7 +42,7 @@
     </#if>
 </div>
 <#include "/include/footer.ftl">
-<script type="text/javascript" src="/shop/js/global.js"></script>
-<script type="text/javascript" src="/shop/js/pageShow.js"></script>
+<script type="text/javascript" src="/js/global.js"></script>
+<script type="text/javascript" src="/js/pageShow.js"></script>
 </body>
 </html>

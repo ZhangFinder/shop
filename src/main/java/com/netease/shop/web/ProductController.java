@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,10 +14,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.netease.shop.meta.Product;
 import com.netease.shop.meta.User;
+import com.netease.shop.service.IProductService;
 
 @Controller
-@RequestMapping("/user") 
+@RequestMapping("/product") 
 public class ProductController {
+	@Autowired
+	IProductService productService;
 	@RequestMapping("/index")
 	public String index(HttpSession session,ModelMap map)
 			throws IOException {
@@ -56,5 +60,73 @@ public class ProductController {
 		map.addAttribute("productList", productList);
 		map.addAttribute("listType", 1);//1 未购买内容,2所有内容
 		return "index";
+	}
+	@RequestMapping("/public")
+	public String publish(HttpSession session,ModelMap map)
+			throws IOException {        
+		User u=(User) session.getAttribute("user");
+		map.addAttribute("user", u);
+		return "public";
+	}
+	@RequestMapping("/publicSubmit")
+	public String publicSubmit(@RequestParam("title") String title,@RequestParam("summary") String summary,
+			@RequestParam("image_url") String imageUrl,@RequestParam("detail") String detail,
+			@RequestParam("price") int price,HttpSession session,ModelMap map)
+			throws IOException {
+        Product product =new Product(title,summary,imageUrl,detail ,price);
+        System.out.println(product);
+        boolean result=productService.insertProduct(product);
+        if (result){
+        	map.addAttribute("product", product);
+        	System.out.println("插入成功");
+        }else{
+        	System.out.println("插入失败");
+        }
+        	       
+        	
+		User u=(User) session.getAttribute("user");
+		map.addAttribute("user", u);
+	
+		return "publicSubmit";
+	}
+	@RequestMapping("/show")
+	public String show(@RequestParam("id") int pid, HttpSession session, ModelMap map)
+			throws IOException {
+    
+		Product product=productService.getProductById(pid);
+		System.out.println(product);
+		
+		User u=(User) session.getAttribute("user");
+		map.addAttribute("user", u);
+		map.addAttribute("product", product);
+		return "show";
+	}
+	@RequestMapping("/edit")
+	public String edit(@RequestParam("id") int pid, HttpSession session, ModelMap map)
+			throws IOException {
+    
+		Product product=productService.getProductById(pid);
+		
+		
+		User u=(User) session.getAttribute("user");
+		map.addAttribute("user", u);
+		map.addAttribute("product", product);
+		return "edit";
+	}
+	@RequestMapping("/editSubmit")
+	public String editSubmit(@RequestParam("id") int pid,@RequestParam("title") String title,
+			@RequestParam("summary") String summary,
+			@RequestParam("image_url") String imageUrl,@RequestParam("detail") String detail,
+			@RequestParam("price") int price ,HttpSession session, ModelMap map)
+			throws IOException {
+    
+		Product product=new Product(pid,title,summary,imageUrl,detail,price);
+		
+		productService.updateProduct(product);
+		System.out.println(product);
+		User u=(User) session.getAttribute("user");
+		map.addAttribute("user", u);
+		map.addAttribute("product", product);
+		return "editSubmit";
 	}
 }
