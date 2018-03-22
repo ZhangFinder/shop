@@ -13,8 +13,12 @@ public class Product implements Serializable {
 	private boolean buy;
 
 	private boolean sell;
-    
-	
+	public Product() {
+
+	}
+	public Product(int id){
+		this.id=id;
+	}
 	public Product(String title, String summary, String imageUrl, String detail, int price) {
 		super();
 		this.title = title;
@@ -55,9 +59,7 @@ public class Product implements Serializable {
 		this.sell=sell;
 	}
 
-	public Product() {
-
-	}
+	
 
 
 

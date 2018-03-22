@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.netease.shop.dao.ITradeDao">
+
+  <resultMap id="traderesult" type="com.netease.shop.meta.Trade">
+		<id property="id" column="buy_id" />
+		<result property="buyAmmount" column="buy_ammount" />		
+		<result property="buyTime" column="buy_time" />	
+	
+		<association property="product" javaType="com.netease.shop.meta.Product" > 
+		   <id  property="id" column="product_id" />  
+          <result property="title" column="title"/>  
+          <result property="price" column="price"/>  
+          <result property="imageUrl" column="image_url"/>  
+		</association> 	
+	</resultMap>
+	
+	<select id="getTradeByUser"   resultMap ="traderesult">
+		select a.buy_id as buy_id, a.buy_ammount as buy_ammount ,a.buy_time as buy_time ,b.product_id as product_id,b.title as title, b.price as price,b.image_url as image_url
+		from tb_buy_history a,tb_product b where a.product_id=b.product_id  and a.buyer_id=#{u.id} order by buy_time desc;
+	</select>
+
+	<!-- 批量操作和foreach标签 -->
+
+	<insert id="batchInsertTrade" parameterType="java.util.List">
+		insert into tb_buy_history (product_id, buyer_id,buy_ammount,buy_time) values
+		<foreach collection="trades" item="trade" separator=",">
+			(#{trade.product.id},#{trade.buyer.id},#{trade.buyAmmount},#{trade.buyTime})
+		</foreach>
+	</insert>
+   
+</mapper>

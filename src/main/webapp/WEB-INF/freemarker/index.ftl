@@ -26,7 +26,7 @@
             <#list productList as x>
                 <#if !x.buy>
                 <li id="p-${x.id}">
-                    <a href="/show?id=${x.id}" class="link">
+                    <a href="/shop/product/show?id=${x.id}" class="link">
                         <div class="img"><img src="${x.imageUrl}" alt="${x.title}"></div>
                         <h3>${x.title}</h3>
                         <div class="price"><span class="v-unit">¥</span><span class="v-value">${x.price}</span></div>
@@ -37,7 +37,7 @@
         <#else>
             <#list productList as x>
                 <li id="p-${x.id}">
-                    <a href="/show?id=${x.id}" class="link">
+                    <a href="/shop/product/show?id=${x.id}" class="link">
                         <div class="img"><img src="${x.imageUrl}" alt="${x.title}"></div>
                         <h3>${x.title}</h3>
                         <div class="price"><span class="v-unit">¥</span><span class="v-value">${x.price}</span></div>

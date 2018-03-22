@@ -6,7 +6,7 @@ CREATE TABLE `tb_user` (
   `usertype` int NOT NULL COMMENT '用户类型',
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='用户表'
--- 创建用户表
+-- 创建产品表
 CREATE TABLE `tb_product` (
   `product_id` int NOT NULL AUTO_INCREMENT COMMENT '产品ID',
   `title` varchar(80) NOT NULL COMMENT '标题',
@@ -17,3 +17,28 @@ CREATE TABLE `tb_product` (
   
   PRIMARY KEY (`product_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='产品表'
+-- 创建产品表
+CREATE TABLE `tb_shop_cart` (
+  `cart_id` int NOT NULL AUTO_INCREMENT COMMENT '购物车ID',
+  `product_id` int NOT NULL COMMENT '产品ID',
+  `user_id` int NOT NULL COMMENT '买家id',
+  `buy_price` int NOT NULL COMMENT '购买价格',
+  `buy_ammount` int NOT NULL COMMENT '购买数量',
+  foreign key(`product_id`) references tb_product(`product_id`),
+  foreign key(`user_id`) references tb_user(`user_id`),
+  
+  PRIMARY KEY (`cart_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='购物车表'
+-- 创建购买记录表
+CREATE TABLE `tb_buy_history` (
+  `buy_id` int NOT NULL AUTO_INCREMENT COMMENT '购买ID',
+  `product_id` int NOT NULL COMMENT '产品ID',
+  `buyer_id` int NOT NULL COMMENT '买家id',
+  `buy_ammount` int NOT NULL COMMENT '购买数量',
+  `buy_time` varchar(50) NOT NULL COMMENT '购买时间',
+  foreign key(`product_id`) references tb_product(`product_id`),
+  foreign key(`buyer_id`) references tb_user(`user_id`),
+  
+  PRIMARY KEY (`buy_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='购物车表'
+

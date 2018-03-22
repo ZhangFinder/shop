@@ -20,11 +20,17 @@
             </div>
             <div class="oprt f-cb">
                 <#if user?? && user.usertype==0>
-                    <#if product.isBuy>
+                    <#if product.buy>
                     <span class="u-btn u-btn-primary z-dis">已购买</span>
                     <span class="buyprice">当时购买价格：¥${product.buyPrice}</span>
                     <#else>
-                    <button class="u-btn u-btn-primary" data-buy="${product.id}">购 买</button>
+                    
+                    <div class="num">购买数量：<span id="plusNum" class="lessNum"><a>-</a></span><span class="totalNum" id="allNum">1</span><span id="addNum" class="moreNum"><a>+</a></span></div>
+                     <div class="oprt f-cb">
+                    <button class="u-btn u-btn-primary" id="add" data-id="${product.id}" data-title="${product.title}" data-price="${product.price}">
+                                                                          加入购物车</button>
+                    </div>
+                    
                     </#if>
                 </#if>
                 <#if user?? && user.usertype==1>
@@ -42,7 +48,7 @@
     </#if>
 </div>
 <#include "/include/footer.ftl">
-<script type="text/javascript" src="/js/global.js"></script>
-<script type="text/javascript" src="/js/pageShow.js"></script>
+<script type="text/javascript" src="/shop/js/global.js"></script>
+<script type="text/javascript" src="/shop/js/pageShow.js"></script>
 </body>
 </html>

@@ -90,31 +90,31 @@ public class ExampleController {
 		return "public";
 	}
 
-	@RequestMapping("/account")
-	public String account(@RequestParam("name") String name, @RequestParam("password") String password, ModelMap map)
-			throws IOException {
-
-		User u = new User(name, password, 1);
-		List<Trade> buyList = new ArrayList<Trade>();
-		Product p1 = new Product(1, "内容A", "http://nec.netease.com/img/s/1.jpg", 1, false, true);
-		Trade buy1 = new Trade(p1, "2018-03-19 15:01");
-		Product p2 = new Product(2, "内容A", "http://nec.netease.com/img/s/2.jpg", 2, true, false);
-		Trade buy2 = new Trade(p2, "2018-03-19 15:03");
-		Product p3 = new Product(3, "内容A", "http://nec.netease.com/img/s/3.jpg", 3, false, true);
-		Trade buy3 = new Trade(p3, "2018-03-19 15:06");
-		Product p4 = new Product(4, "内容A", "http://nec.netease.com/img/s/4.jpg", 4, true, false);
-		Trade buy4 = new Trade(p4, "2018-03-19 15:10");
-		Product p5 = new Product(5, "内容A", "http://nec.netease.com/img/s/5.jpg", 5, false, true);
-		Trade buy5 = new Trade(p5, "2018-03-19 15:15");
-		buyList.add(buy1);
-		buyList.add(buy2);
-		buyList.add(buy3);
-		buyList.add(buy4);
-		buyList.add(buy5);
-		map.addAttribute("user", u);
-		map.addAttribute("buyList", buyList);
-		return "account";
-	}
+//	@RequestMapping("/account")
+//	public String account(@RequestParam("name") String name, @RequestParam("password") String password, ModelMap map)
+//			throws IOException {
+//
+//		User u = new User(name, password, 1);
+//		List<Trade> buyList = new ArrayList<Trade>();
+//		Product p1 = new Product(1, "内容A", "http://nec.netease.com/img/s/1.jpg", 1, false, true);
+//		Trade buy1 = new Trade(p1, "2018-03-19 15:01");
+//		Product p2 = new Product(2, "内容A", "http://nec.netease.com/img/s/2.jpg", 2, true, false);
+//		Trade buy2 = new Trade(p2, "2018-03-19 15:03");
+//		Product p3 = new Product(3, "内容A", "http://nec.netease.com/img/s/3.jpg", 3, false, true);
+//		Trade buy3 = new Trade(p3, "2018-03-19 15:06");
+//		Product p4 = new Product(4, "内容A", "http://nec.netease.com/img/s/4.jpg", 4, true, false);
+//		Trade buy4 = new Trade(p4, "2018-03-19 15:10");
+//		Product p5 = new Product(5, "内容A", "http://nec.netease.com/img/s/5.jpg", 5, false, true);
+//		Trade buy5 = new Trade(p5, "2018-03-19 15:15");
+//		buyList.add(buy1);
+//		buyList.add(buy2);
+//		buyList.add(buy3);
+//		buyList.add(buy4);
+//		buyList.add(buy5);
+//		map.addAttribute("user", u);
+//		map.addAttribute("buyList", buyList);
+//		return "account";
+//	}
 
 	@RequestMapping("/show")
 	public String show(@RequestParam("name") String name, @RequestParam("password") String password,

@@ -3,31 +3,57 @@ package com.netease.shop.meta;
 import java.io.Serializable;
 
 public class Trade implements Serializable {
-	private Product product;
-	private String buyTime;
+	private int id;
+    private Product product;
+    private User buyer;
+    private int buyAmmount;
+    private String buyTime;
+    
+
     public Trade(){
     	
     }
-	public Trade(Product product, String buyTime) {
+	public Trade(Product product,User buyer, int buyAmmount, String buyTime) {
 		super();
-		this.product = product;
+		this.setProduct(product);
+		this.setBuyer(buyer);
+		this.buyAmmount = buyAmmount;
+		this.buyTime = buyTime;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+	public int getBuyAmmount() {
+		return buyAmmount;
+	}
+	public void setBuyAmmount(int buyAmmount) {
+		this.buyAmmount = buyAmmount;
+	}
+	public String getBuyTime() {
+		return buyTime;
+	}
+	public void setBuyTime(String buyTime) {
 		this.buyTime = buyTime;
 	}
 
 	public Product getProduct() {
 		return product;
 	}
-
 	public void setProduct(Product product) {
 		this.product = product;
 	}
-
-	public String getBuyTime() {
-		return buyTime;
+	public User getBuyer() {
+		return buyer;
+	}
+	public void setBuyer(User buyer) {
+		this.buyer = buyer;
 	}
 
-	public void setBuyTime(String buyTime) {
-		this.buyTime = buyTime;
-	}
+    
 
 }
