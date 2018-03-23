@@ -1,4 +1,5 @@
 (function(w,d,u){
+
 	var settleAccount = util.get('settleAccount');
 	if(!settleAccount){
 		return;
@@ -8,14 +9,17 @@
 	var $ = function(id){
 		return document.getElementById(id);
 	}
-	
+
 	var str = "<tr>" + 
 			  "<th>" + '内容名称'  + "</th>"+ 
 			  "<th>" + '数量' + "</th>" +
 			  "<th>" + '价格' + "</th>" +
 			  "</tr>";
-
-	for(var i = 0; i < products.length; i++){
+    if(products==null){
+    	$("newTable").innerHTML = "购物车为空";
+    }else{
+    
+	 for(var i = 0; i < products.length; i++){
 		str = str + 
 		"<tr>" + 
 		"<td>" + products[i].title  + "</td>"+
@@ -26,8 +30,8 @@
 		"<span class=\"moreNum\">"+ "+" + "</span>" + "</td>" +
 		"<td>" + products[i].price + "</td>" +
 		"</tr>";
-	}
-
+	 }
+    }
 	$("newTable").innerHTML = str;
 
 	window.onload = function(){

@@ -1,7 +1,9 @@
 package com.netease.shop.meta;
 
 import java.io.Serializable;
-
+/**
+ * 内容产品
+ */
 public class Product implements Serializable {
 	private int id;
 	private String title;
@@ -9,7 +11,7 @@ public class Product implements Serializable {
 	private String imageUrl;
 	private String detail;
 	private int price;
-    private int soldAmmount;
+    private int soldAmmount;//该字段不映射到数据库表中
 	
 	public Product() {
 

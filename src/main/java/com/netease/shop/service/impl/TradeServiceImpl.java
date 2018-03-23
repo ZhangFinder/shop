@@ -14,14 +14,16 @@ import com.netease.shop.service.ITradeService;
 @Service("tradeService")
 public class TradeServiceImpl implements ITradeService {
 	@Autowired
-    ITradeDao tradeDao;
+	ITradeDao tradeDao;
+
 	@Transactional
 	public int insertTradeArray(List<Trade> trades) {
-		
+
 		return tradeDao.batchInsertTrade(trades);
 	}
+
 	public List<Trade> getTradeListByUser(User u) {
-		
+
 		return tradeDao.getTradeByUser(u);
 	}
 

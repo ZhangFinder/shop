@@ -20,9 +20,9 @@
             </div>
             <div class="oprt f-cb">
                 <#if user?? && user.usertype==0>
-                    <#if product.buy>
-                    <span class="u-btn u-btn-primary z-dis">已购买</span>
-                    <span class="buyprice">当时购买价格：¥${product.buyPrice}</span>
+                    <#if !(product.soldAmmount==0) >
+                    <span class="u-btn u-btn-primary z-dis">已购买，购买数量：${product.soldAmmount}件</span>
+                    <span class="buyprice">当时购买价格：¥${product.price}</span>
                     <#else>
                     
                     <div class="num">购买数量：<span id="plusNum" class="lessNum"><a>-</a></span><span class="totalNum" id="allNum">1</span><span id="addNum" class="moreNum"><a>+</a></span></div>

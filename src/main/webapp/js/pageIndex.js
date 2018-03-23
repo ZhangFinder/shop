@@ -23,9 +23,10 @@
 					layer.hide();
 					loading.show();
 					ajax({
-						url:'/api/delete',
+						url:'/shop/product/delete',
 						data:{id:id},
 						success:function(json){
+						
 							this.delItemNode(id);
 							loading.result('删除成功');
 						}.bind(this)

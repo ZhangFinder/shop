@@ -1,7 +1,9 @@
 package com.netease.shop.meta;
 
 import java.io.Serializable;
-
+/**
+ * 交易信息类
+ */
 public class Trade implements Serializable {
 	private int id;
     private Product product;

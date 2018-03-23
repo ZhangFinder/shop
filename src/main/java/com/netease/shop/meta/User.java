@@ -1,7 +1,9 @@
 package com.netease.shop.meta;
 
 import java.io.Serializable;
-
+/**
+ * 用户类
+ */
 public class User implements Serializable {
 	private int id;
 	private String username;
