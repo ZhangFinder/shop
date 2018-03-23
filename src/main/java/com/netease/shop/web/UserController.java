@@ -28,7 +28,7 @@ public class UserController {
 	public  @ResponseBody String login(@RequestParam("userName") String userName, @RequestParam("password") String password,HttpSession httpSession, ModelMap map)
 			throws IOException {
    
-        System.out.println("password:"+password);;
+       
 		User u=userService.checkUsernameAndPwd(userName, password);
 	
 		ObjectMapper mapper = new ObjectMapper(); 

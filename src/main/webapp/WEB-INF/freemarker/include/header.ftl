@@ -10,7 +10,7 @@
         <ul class="nav">
             <li><a href="/shop/product/index">首页</a></li>
             <#if user?? && user.usertype==0>
-            <li><a href="/shop/product/account">账务</a></li>
+            <li><a href="/shop/product/account">财务</a></li>
             <li><a href="/shop/product/settleaccount">购物车</a></li>
             </#if>
             <#if user?? && user.usertype==1>

@@ -9,10 +9,8 @@ public class Product implements Serializable {
 	private String imageUrl;
 	private String detail;
 	private int price;
-
-	private boolean buy;
-
-	private boolean sell;
+    private int soldAmmount;
+	
 	public Product() {
 
 	}
@@ -38,26 +36,6 @@ public class Product implements Serializable {
 		this.price = price;
 	}
 
-	public Product(int pid, String title, String summary, String imageUrl, String detail, int price, boolean buy,
-			boolean sell) {
-		super();
-		this.id = pid;
-		this.title = title;
-		this.summary = summary;
-		this.imageUrl = imageUrl;
-		this.detail = detail;
-		this.price = price;
-		this.buy = buy;
-		this.sell = sell;
-	}
-	public Product(int pid,String title,String imageUrl,int price ,boolean buy,boolean sell){
-		this.id=pid;
-		this.title=title;		
-		this.imageUrl=imageUrl;
-		this.price=price;
-		this.buy=buy;
-		this.sell=sell;
-	}
 
 	
 
@@ -79,21 +57,7 @@ public class Product implements Serializable {
 		this.price = price;
 	}
 
-	public boolean isBuy() {
-		return buy;
-	}
 
-	public void setBuy(boolean buy) {
-		this.buy = buy;
-	}
-
-	public boolean isSell() {
-		return sell;
-	}
-
-	public void setSell(boolean sell) {
-		this.sell = sell;
-	}
 
 	public String getSummary() {
 		return summary;
@@ -126,11 +90,20 @@ public class Product implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-
+	public int getSoldAmmount() {
+		return soldAmmount;
+	}
+	public void setSoldAmmount(int soldAmmount) {
+		this.soldAmmount = soldAmmount;
+	}
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", title=" + title + ", summary=" + summary + ", imageUrl=" + imageUrl
-				+ ", detail=" + detail + ", price=" + price + ", buy=" + buy + ", sell=" + sell + "]";
+				+ ", detail=" + detail + ", price=" + price + ", soldAmmount=" + soldAmmount + "]";
 	}
+
+
+
+
     
 }

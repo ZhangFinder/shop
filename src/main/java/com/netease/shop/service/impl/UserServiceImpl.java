@@ -18,7 +18,7 @@ public class UserServiceImpl implements IUserService {
 		if(user!=null&&user.getPassword().equals(password)){
 			return user;
 		}else{
-			System.out.println("用户名或者密码错误!");
+			
 			return null;
 		}
 		

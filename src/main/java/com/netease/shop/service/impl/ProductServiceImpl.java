@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.netease.shop.dao.IProductDao;
 import com.netease.shop.meta.Product;
+import com.netease.shop.meta.User;
 import com.netease.shop.service.IProductService;
 
 @Service("productService")
@@ -34,8 +35,12 @@ public class ProductServiceImpl implements IProductService {
 		productDao.updateProduct(product);
 		throw new  RuntimeException("test");//事务测试测试成功
 	}
-	public List<Product> getProductList() {
+	public List<Product> getProductList(User u) {
+		if(u==null||u.getUsertype()==1){
+			return productDao.getAllProductList();
+		}else{
+			return productDao.getProductList(u);
+		}
 		
-		return productDao.getProductList();
 	}
 }

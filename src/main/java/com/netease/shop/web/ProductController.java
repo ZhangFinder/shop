@@ -39,16 +39,16 @@ public class ProductController {
 	 */
 	
 	@RequestMapping("/index")
-	public String index(HttpSession session,ModelMap map)
+	public String index(@RequestParam(value="type", defaultValue="0") int type, HttpSession session,ModelMap map)
 			throws IOException {
 
-		
-		List<Product> productList=productService.getProductList();
-		
 		User u=(User) session.getAttribute("user");
+		List<Product> productList=productService.getProductList(u);
+		
+
 		map.addAttribute("user", u);
 		map.addAttribute("productList", productList);
-		map.addAttribute("listType", 1);//1 未购买内容,2所有内容
+		map.addAttribute("listType", type);//1 未购买内容,2所有内容
 		return "index";
 	}
 	/**

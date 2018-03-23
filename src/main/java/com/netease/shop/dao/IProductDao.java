@@ -11,6 +11,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.netease.shop.meta.Product;
+import com.netease.shop.meta.User;
 
 public interface IProductDao {
 	
@@ -42,8 +43,29 @@ public interface IProductDao {
 		@Result(property = "summary", column = "summary"),
 		@Result(property = "imageUrl", column = "image_url"),
 		@Result(property = "detail", column = "detail"),
-		@Result(property = "price", column = "price")}
+		@Result(property = "price", column = "price"),
+		@Result(property = "soldAmmount", column = "sold_ammount")}
 	)
-	@Select("select * from tb_product")
-	public List<Product> getProductList();
+	@Select("select a.product_id as product_id ,a.title as title,a.summary as summary,"
+			+" a.image_url as image_url ,a.detail as detail, a.price as price,"
+			+" b.sold_ammount as sold_ammount from tb_product a  left join (select product_id ,sum(buy_ammount)as sold_ammount from tb_buy_history where buyer_id=#{id} group by product_id)b on a.product_id =b.product_id")
+	public List<Product> getProductList(User u);
+	
+	
+	@Results({ 
+		@Result(property = "id", column = "product_id"), 
+		@Result(property = "title", column = "title"),
+		@Result(property = "summary", column = "summary"),
+		@Result(property = "imageUrl", column = "image_url"),
+		@Result(property = "detail", column = "detail"),
+		@Result(property = "price", column = "price"),
+		@Result(property = "soldAmmount", column = "sold_ammount")}
+	)
+	@Select("select a.product_id as product_id ,a.title as title,a.summary as summary,"
+			+" a.image_url as image_url ,a.detail as detail, a.price as price,"
+			+" b.sold_ammount as sold_ammount from tb_product a  left join (select product_id ,sum(buy_ammount)as sold_ammount from tb_buy_history group by product_id)b on a.product_id =b.product_id")
+	public List<Product> getAllProductList();
+	
+	
+
 }

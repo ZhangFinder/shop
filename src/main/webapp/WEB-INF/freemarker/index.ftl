@@ -9,8 +9,8 @@
     <div class="m-tab m-tab-fw m-tab-simple f-cb">
         <div class="tab">
             <ul>
-                <li <#if !listType?? || listType != 1>class="z-sel"</#if> ><a href="/">所有内容</a></li>
-                <#if user?? && user.usertype == 0><li <#if listType == 1>class="z-sel"</#if> ><a href="/?type=1">未购买的内容</a></li></#if>
+                <li <#if !listType?? || listType != 1>class="z-sel"</#if> ><a href="/shop/product/index">所有内容</a></li>
+                <#if user?? && user.usertype == 0><li <#if listType?? &&listType == 1>class="z-sel"</#if> ><a href="/shop/product/index?type=1">未购买的内容</a></li></#if>
             </ul>
         </div>
     </div>
@@ -22,9 +22,9 @@
     <#else>
     <div class="n-plist">
         <ul class="f-cb" id="plist">
-        <#if user?? && user.usertype == 0 && listType == 1>
+        <#if user?? && user.usertype == 0 && listType?? && listType == 1>
             <#list productList as x>
-                <#if !x.buy>
+                <#if x.soldAmmount==0>
                 <li id="p-${x.id}">
                     <a href="/shop/product/show?id=${x.id}" class="link">
                         <div class="img"><img src="${x.imageUrl}" alt="${x.title}"></div>
@@ -39,12 +39,13 @@
                 <li id="p-${x.id}">
                     <a href="/shop/product/show?id=${x.id}" class="link">
                         <div class="img"><img src="${x.imageUrl}" alt="${x.title}"></div>
-                        <h3>${x.title}</h3>
+                        <h3>${x.title} <#if user?? && user.usertype==1 && !(x.soldAmmount==0)><span ><b>(售出${x.soldAmmount}件)</b></span></#if> </h3>
                         <div class="price"><span class="v-unit">¥</span><span class="v-value">${x.price}</span></div>
-                        <#if user?? && user.usertype==0 && x.buy><span class="had"><b>已购买</b></span></#if>
-                        <#if user?? && user.usertype==1 && x.sell><span class="had"><b>已售出</b></span></#if>
+                        <#if user?? && user.usertype==0 && !(x.soldAmmount==0)><span class="had"><b>已购买</b></span></#if>
+                        <#if user?? && user.usertype==1 && !(x.soldAmmount==0)><span class="had"><b>已售出</b></span></#if>
                     </a>
-                    <#if user?? && user.usertype==1 && !x.sell><span class="u-btn u-btn-normal u-btn-xs del" data-del="${x.id}">删除</span></#if>
+                    <#if user?? && user.usertype==1 && x.soldAmmount==0><span class="u-btn u-btn-normal u-btn-xs del" data-del="${x.id}">删除</span></#if>
+                   
                 </li>
             </#list>
         </#if>

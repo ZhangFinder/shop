@@ -19,4 +19,6 @@ public interface ITradeDao {
     public int batchInsertTrade(@Param("trades")List<Trade> trades); //复杂数据库操作不用注解，用XML 	
     
     public List<Trade> getTradeByUser(@Param("u")User u);
+    
+
 }
