@@ -131,5 +131,28 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<!-- 这样也可以把所有的xml文件，打包到相应位置。 -->
+
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*.properties</include>
+					<include>**/*.xml</include>
+					<include>**/*.tld</include>
+				</includes>
+				<filtering>false</filtering>
+			
+			</resource>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.properties</include>
+					<include>**/*.xml</include>
+					<include>**/*.tld</include>
+				</includes>
+				<filtering>false</filtering>
+			</resource>
+		</resources>
 	</build>
 </project>
