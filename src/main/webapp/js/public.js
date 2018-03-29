@@ -56,7 +56,7 @@
 		            form.enctype = "multipart/form-data";
 
 		            var xhr = new XMLHttpRequest();
-		            xhr.open("post", "/shop/product/upload", true);
+		            xhr.open("post", "/shop/product/authupload", true);
 		            xhr.onload = function () {
 		            	  if (xhr.status === 200) {
 		            	    alert("文件上传成功");

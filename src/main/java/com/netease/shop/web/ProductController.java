@@ -66,7 +66,7 @@ public class ProductController {
 	 * 
 	 * @return public.ftl 发布页面视图
 	 */
-	@RequestMapping("/public")
+	@RequestMapping("/authpublic")
 	public String publish(HttpSession session, ModelMap map) throws IOException {
 		User u = (User) session.getAttribute("user");
 		map.addAttribute("user", u);
@@ -79,7 +79,7 @@ public class ProductController {
 	 * @param pid,title,summary,imageUrl,detail,price
 	 * @return publicSubmit.ftl 增加结果视图
 	 */
-	@RequestMapping("/publicSubmit")
+	@RequestMapping("/authpublicSubmit")
 	public String publicSubmit(@RequestParam("title") String title, @RequestParam("summary") String summary,
 			@RequestParam("image_url") String imageUrl, @RequestParam("detail") String detail,
 			@RequestParam("price") int price, HttpSession session, ModelMap map) throws IOException {
@@ -90,7 +90,7 @@ public class ProductController {
 			map.addAttribute("product", product);
 
 		} else {
-
+           //map中没有product对应的value，视图会切换到发布失败
 		}
 
 		User u = (User) session.getAttribute("user");
@@ -105,7 +105,7 @@ public class ProductController {
 	 * @param file
 	 * @return json
 	 */
-	@RequestMapping(value = "/upload", method = RequestMethod.POST)
+	@RequestMapping(value = "/authupload", method = RequestMethod.POST)
 	public @ResponseBody String uploadFile(@RequestParam("file") MultipartFile file, HttpServletRequest request)
 			throws IOException {
 
@@ -164,7 +164,7 @@ public class ProductController {
 	 * @param pid,product的id
 	 * @return edit.ftl 编辑视图
 	 */
-	@RequestMapping("/edit")
+	@RequestMapping("/authedit")
 	public String edit(@RequestParam("id") int pid, HttpSession session, ModelMap map) throws IOException {
 
 		Product product = productService.getProductById(null, pid);
@@ -181,7 +181,7 @@ public class ProductController {
 	 * @param pid,title,summary,imageUrl,detail,price
 	 * @return editSubmit.ftl 更新结果视图
 	 */
-	@RequestMapping("/editSubmit")
+	@RequestMapping("/autheditSubmit")
 	public String editSubmit(@RequestParam("id") int pid, @RequestParam("title") String title,
 			@RequestParam("summary") String summary, @RequestParam("image_url") String imageUrl,
 			@RequestParam("detail") String detail, @RequestParam("price") int price, HttpSession session, ModelMap map)
@@ -203,7 +203,7 @@ public class ProductController {
 	 * @param pid
 	 * @return json
 	 */
-	@RequestMapping("/delete")
+	@RequestMapping("/authdelete")
 	public @ResponseBody String deleteProduct(@RequestParam("id") int pid, HttpSession session) {
 		User u = (User) session.getAttribute("user");
 
@@ -236,7 +236,7 @@ public class ProductController {
 	 * @param
 	 * @return settleaccount。ftl
 	 */
-	@RequestMapping("/settleaccount")
+	@RequestMapping("/authsettleaccount")
 	public String gotoSettleAccount(HttpSession session, ModelMap map) {
 		User u = (User) session.getAttribute("user");
 		map.addAttribute("user", u);
@@ -249,7 +249,7 @@ public class ProductController {
 	 * @param reJsonArray
 	 * @return json
 	 */
-	@RequestMapping("/trade")
+	@RequestMapping("/authtrade")
 	public @ResponseBody String buyProduct(@RequestBody String reJsonArray, HttpSession session, ModelMap map) {
 		User u = (User) session.getAttribute("user");
 
@@ -291,7 +291,7 @@ public class ProductController {
 	 * 
 	 * @return account.ftl
 	 */
-	@RequestMapping("/account")
+	@RequestMapping("/authaccount")
 	public String account(HttpSession session, ModelMap map) {
 		User u = (User) session.getAttribute("user");
 		List<Trade> buyList = tradeService.getTradeListByUser(u);

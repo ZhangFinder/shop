@@ -13,7 +13,7 @@
     </div>
     <#else>
     <div class="n-public">
-        <form class="m-form m-form-ht" id="form" method="post" action="/shop/product/editSubmit?id=${product.id}" onsubmit="return false;" autocomplete="off">
+        <form class="m-form m-form-ht" id="form" method="post" action="/shop/product/autheditSubmit?id=${product.id}" onsubmit="return false;" autocomplete="off">
             <div class="fmitem">
                 <label class="fmlab">标题：</label>
                 <div class="fmipt">

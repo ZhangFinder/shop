@@ -34,7 +34,7 @@
                     </#if>
                 </#if>
                 <#if user?? && user.usertype==1>
-                <a href="/shop/product/edit?id=${product.id}" class="u-btn u-btn-primary">编 辑</a>
+                <a href="/shop/product/authedit?id=${product.id}" class="u-btn u-btn-primary">编 辑</a>
                 </#if>
             </div>
         </div>

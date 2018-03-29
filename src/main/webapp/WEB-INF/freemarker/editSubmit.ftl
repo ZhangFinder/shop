@@ -14,7 +14,7 @@
     <#else>
     <div class="n-result">
         <h3>编辑失败！</h3>
-        <p><a href="/shop/product/edit?id=${product.id}">[重新编辑]</a><a href="/shop/product/index">[返回首页]</a></p>
+        <p><a href="/shop/product/authedit?id=${product.id}">[重新编辑]</a><a href="/shop/product/index">[返回首页]</a></p>
     </div>
     </#if>
 </div>

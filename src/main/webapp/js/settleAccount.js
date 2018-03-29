@@ -82,7 +82,7 @@
 				                	var json = JSON.parse(xhr.responseText);
 				                	if(json && json.code == 200){
 				                		util.deleteCookie(name);
-				                		loading.result('购买成功',function(){location.href = '/shop/product/account';});
+				                		loading.result('购买成功',function(){location.href = '/shop/product/authaccount';});
 				                		
 				                	}else{
 				                		alert(json.message);
@@ -92,7 +92,7 @@
 				                }
 				            }
 					};
-					 xhr.open('post','/shop/product/trade');
+					 xhr.open('post','/shop/product/authtrade');
 					 xhr.setRequestHeader('Content-Type','application/json');
 					 xhr.send(data);
 				}.bind(this)

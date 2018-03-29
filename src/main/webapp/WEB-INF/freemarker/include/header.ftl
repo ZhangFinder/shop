@@ -10,11 +10,11 @@
         <ul class="nav">
             <li><a href="/shop/product/index">首页</a></li>
             <#if user?? && user.usertype==0>
-            <li><a href="/shop/product/account">财务</a></li>
-            <li><a href="/shop/product/settleaccount">购物车</a></li>
+            <li><a href="/shop/product/authaccount">财务</a></li>
+            <li><a href="/shop/product/authsettleaccount">购物车</a></li>
             </#if>
             <#if user?? && user.usertype==1>
-            <li><a href="/shop/product/public">发布</a></li>
+            <li><a href="/shop/product/authpublic">发布</a></li>
             </#if>
         </ul>
     </div>

@@ -23,7 +23,7 @@
 					layer.hide();
 					loading.show();
 					ajax({
-						url:'/shop/product/delete',
+						url:'/shop/product/authdelete',
 						data:{id:id},
 						success:function(json){
 						

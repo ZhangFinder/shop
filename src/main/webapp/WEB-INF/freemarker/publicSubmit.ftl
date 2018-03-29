@@ -13,7 +13,7 @@
     <#else>
     <div class="n-result">
         <h3>发布失败！</h3>
-        <p><a href="/shop/product/public">[重新发布]</a><a href="/shop/product/index">[返回首页]</a></p>
+        <p><a href="/shop/product/authpublic">[重新发布]</a><a href="/shop/product/index">[返回首页]</a></p>
     </div>
     </#if>
 </div>
